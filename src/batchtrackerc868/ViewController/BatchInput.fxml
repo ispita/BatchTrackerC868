@@ -2,8 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.BatchInputController">
@@ -14,12 +19,46 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="batchNumber" layoutX="14.0" layoutY="104.0" />
-      <TextField fx:id="employeeName" layoutX="205.0" layoutY="104.0" />
-      <TextField fx:id="employeeDepartment" layoutX="397.0" layoutY="104.0" />
-      <Label layoutX="14.0" layoutY="87.0" text="Batch Number" />
-      <Label layoutX="205.0" layoutY="87.0" text="Employee Name" />
-      <Label layoutX="397.0" layoutY="87.0" text="Department" />
-      <Button layoutX="581.0" layoutY="104.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+      <TabPane layoutY="49.0" prefHeight="374.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Check In">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="batchNumber" layoutX="38.0" layoutY="31.0" />
+                        <TextField fx:id="employeeName" layoutX="223.0" layoutY="31.0" />
+                        <TextField fx:id="employeeDepartment" layoutX="418.0" layoutY="31.0" />
+                        <Label layoutX="38.0" layoutY="14.0" text="Batch Number" />
+                        <Label layoutX="223.0" layoutY="14.0" text="Employee Name" />
+                        <Label layoutX="418.0" layoutY="14.0" text="Department" />
+                        <Button layoutX="599.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+                        <TableView fx:id="batchesInTable" layoutX="38.0" layoutY="66.0" prefHeight="220.0" prefWidth="618.0">
+                          <columns>
+                            <TableColumn fx:id="batch_number" prefWidth="155.0" text="batch_number" />
+                              <TableColumn fx:id="employee_name" prefWidth="234.0" text="employee_name" />
+                              <TableColumn fx:id="employee_department" prefWidth="228.0" text="employee_department" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab text="Check Out">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="batchNumber1" layoutX="38.0" layoutY="31.0" />
+                        <TextField fx:id="employeeName1" layoutX="223.0" layoutY="31.0" />
+                        <TextField fx:id="employeeDepartment1" layoutX="418.0" layoutY="31.0" />
+                        <Label layoutX="38.0" layoutY="14.0" text="Batch Number" />
+                        <Label layoutX="223.0" layoutY="14.0" text="Employee Name" />
+                        <Label layoutX="418.0" layoutY="14.0" text="Department" />
+                        <Button layoutX="599.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

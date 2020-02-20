@@ -5,12 +5,11 @@
  */
 package batchtrackerc868.Model;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import static utils.DBConnection.getDbConn;
 /**
  *
  * @author fborojan
@@ -38,5 +37,25 @@ public class DBQueries {
           System.out.println("Error: " + e);            
     }
     return batchData;
+}
+    
+    
+    
+public static void insertBatchIn(String batch, String name, String department){        
+    try{      
+        String SQL = "INSERT INTO batch_input (batch_number,employee_name,employee_department) " 
+                + "VALUES (?,?,?)";
+        PreparedStatement sqlInsert = DBConn.prepareStatement(SQL);
+        sqlInsert.setString(1, batch);
+        sqlInsert.setString(2, name);
+        sqlInsert.setString(3, department);
+        sqlInsert.executeUpdate();  
+     
+    }
+    catch(SQLException e){
+
+          System.out.println("Error: " + e);            
+    }
+
 }
 }
