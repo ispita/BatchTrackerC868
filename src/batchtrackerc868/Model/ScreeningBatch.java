@@ -13,15 +13,15 @@ import javafx.beans.property.StringProperty;
  * @author fborojan
  */
 public class ScreeningBatch extends Batch  {
-    private StringProperty employeeDepartment;
+        private StringProperty employeeDepartment;
     
-    public ScreeningBatch(){
-        this.employeeDepartment = new SimpleStringProperty();
-        this.employeeDepartment.set("Screening");
-    }
+        public ScreeningBatch(){
+            this.employeeDepartment = new SimpleStringProperty();
+            this.employeeDepartment.set("Screening");
+        }
     
         public StringProperty getEmployeeDepartment() {
-        return employeeDepartment;
-    }
+                 return employeeDepartment;
+        }
     
 }

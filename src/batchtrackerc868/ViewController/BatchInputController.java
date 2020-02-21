@@ -38,7 +38,7 @@ public class BatchInputController implements Initializable {
     @FXML
     private TableColumn<Batch, String> employee_name;
     @FXML
-    private TableColumn<ExtractionsBatch, String> employee_department;
+    private TableColumn<Batch, String> employee_department;
 
 
 

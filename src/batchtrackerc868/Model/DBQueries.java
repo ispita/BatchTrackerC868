@@ -25,12 +25,29 @@ public class DBQueries {
         ResultSet result = DBConn.createStatement().executeQuery(SQL);  
         while(result.next()){
             Batch batch = new Batch();
-            if(result.getString("employee_department").equals("Extractions")){
-            batch = new ExtractionsBatch();
-            batch.setBatchNumber(result.getString("batch_number"));
-            batch.setEmployeeName(result.getString("employee_name"));          
-            batchData.add(batch);            
+            switch (result.getString("employee_department")){
+                    case "Extractions":
+                       batch = new ExtractionsBatch();
+                       batch.setBatchNumber(result.getString("batch_number"));
+                       batch.setEmployeeName(result.getString("employee_name"));          
+                       batchData.add(batch);            
+                       break;
+                    case "Screening":
+                       batch = new ScreeningBatch();
+                       batch.setBatchNumber(result.getString("batch_number"));
+                       batch.setEmployeeName(result.getString("employee_name"));          
+                       batchData.add(batch);                         
+                        break;
+                        
+                    case "Data Review":
+                       batch = new DataReviewBatch();
+                       batch.setBatchNumber(result.getString("batch_number"));
+                       batch.setEmployeeName(result.getString("employee_name"));          
+                       batchData.add(batch);                         
+                        break;
             }
+                    
+            
         }
      
     }
