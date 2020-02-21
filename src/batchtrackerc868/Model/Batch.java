@@ -7,6 +7,7 @@ package batchtrackerc868.Model;
 
 import java.sql.Timestamp;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -21,9 +22,10 @@ public class Batch {
 
     
     public Batch(){
+        this.pkBatch = new SimpleIntegerProperty();
         this.batchNumber = new SimpleStringProperty();
         this.employeeName = new SimpleStringProperty();
-        this.employeeDepartment = new SimpleStringProperty();
+
     }
     
     public IntegerProperty getPkBatch() {
@@ -50,14 +52,6 @@ public class Batch {
         this.employeeName.set(employeeName);
     }
 
-    public StringProperty getEmployeeDepartment() {
-        return employeeDepartment;
-    }
-
-    public void setEmployeeDepartment(String employeeDepartment) {
-        this.employeeDepartment.set(employeeDepartment);
-    }
-
     public Timestamp getTimeIn() {
         return timeIn;
     }
@@ -73,5 +67,8 @@ public class Batch {
     public void setTimeOut(Timestamp timeOut) {
         this.timeOut = timeOut;
     }
-    
+    public StringProperty getEmployeeDepartment(){
+        return employeeDepartment;
+        
+    }
 }

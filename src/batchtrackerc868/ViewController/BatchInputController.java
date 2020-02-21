@@ -7,7 +7,8 @@ package batchtrackerc868.ViewController;
 
 import batchtrackerc868.Model.Batch;
 import static batchtrackerc868.Model.DBQueries.assembleBatchData;
-import static batchtrackerc868.Model.DBQueries.insertBatchIn;
+import batchtrackerc868.Model.ExtractionsBatch;
+//import static batchtrackerc868.Model.DBQueries.insertBatchIn;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -37,7 +38,7 @@ public class BatchInputController implements Initializable {
     @FXML
     private TableColumn<Batch, String> employee_name;
     @FXML
-    private TableColumn<Batch, String> employee_department;
+    private TableColumn<ExtractionsBatch, String> employee_department;
 
 
 
@@ -55,10 +56,10 @@ public class BatchInputController implements Initializable {
     
     @FXML
     private void handleSubmitButton(ActionEvent e){
-        insertBatchIn(batchNumber.getText(),employeeName.getText(),employeeDepartment.getText());
-        batchNumber.setText("");
-        employeeName.setText("");
-        employeeDepartment.setText("");
+//        insertBatchIn(batchNumber.getText(),employeeName.getText(),employeeDepartment.getText());
+//        batchNumber.setText("");
+//        employeeName.setText("");
+//        employeeDepartment.setText("");
         batchesInTable.setItems(assembleBatchData());
 
     }
