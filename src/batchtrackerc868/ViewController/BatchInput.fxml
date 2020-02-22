@@ -11,34 +11,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.BatchInputController">
+<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.BatchInputController">
    <children>
-      <Button layoutX="607.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleReturnHome" text="Return Home" />
+      <Button layoutX="734.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleReturnHome" text="Return Home" />
       <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="219.0" text="Batch Check In/Out">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutY="49.0" prefHeight="374.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="49.0" prefHeight="374.0" prefWidth="835.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Check In">
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="batchNumber" layoutX="38.0" layoutY="31.0" />
-                        <TextField fx:id="employeeName" layoutX="223.0" layoutY="31.0" />
-                        <TextField fx:id="employeeDepartment" layoutX="418.0" layoutY="31.0" />
                         <Label layoutX="38.0" layoutY="14.0" text="Batch Number" />
-                        <Label layoutX="223.0" layoutY="14.0" text="Employee Name" />
-                        <Label layoutX="418.0" layoutY="14.0" text="Department" />
-                        <Button layoutX="599.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-                        <TableView fx:id="batchesInTable" layoutX="38.0" layoutY="66.0" prefHeight="220.0" prefWidth="618.0">
+                        <Button layoutX="203.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+                        <TableView fx:id="batchesInTable" layoutX="11.0" layoutY="66.0" prefHeight="220.0" prefWidth="812.0">
                           <columns>
-                            <TableColumn fx:id="batch_number" prefWidth="155.0" text="batch_number" />
-                              <TableColumn fx:id="employee_name" prefWidth="234.0" text="employee_name" />
-                              <TableColumn fx:id="employee_department" prefWidth="228.0" text="employee_department" />
+                            <TableColumn fx:id="batch_number" prefWidth="133.0" text="Batch Number" />
+                              <TableColumn fx:id="employee_name" prefWidth="171.0" text="Name" />
+                              <TableColumn fx:id="employee_department" prefWidth="153.0" text="Department" />
+                              <TableColumn fx:id="timeIn" prefWidth="178.0" text="Time In" />
+                              <TableColumn fx:id="timeOut" prefWidth="175.0" text="Time Out" />
                           </columns>
                         </TableView>
+                        <TextField fx:id="batchSearchField" layoutX="38.0" layoutY="306.0" />
+                        <Button layoutX="206.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleSearchBatchButton" text="Search" />
+                        <Button layoutX="743.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleClearSearchFilterButton" text="Clear Filters" />
                      </children>
                   </Pane>
                </content>

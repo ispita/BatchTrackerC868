@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.LoginController">
+     <children>
+      <Button fx:id="button" layoutX="138.0" layoutY="151.0" onAction="#handleLoginButton" text="Login" />
+      <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Label fx:id="userLabel" layoutX="26.0" layoutY="59.0" text="Username:" />
+      <Label fx:id="passLabel" layoutX="26.0" layoutY="100.0" prefHeight="17.0" prefWidth="54.0" text="Password:" />
+      <TextField fx:id="usernameInput" layoutX="86.0" layoutY="55.0" />
+      <TextField fx:id="passwordInput" layoutX="87.0" layoutY="96.0" />
+    </children>
+</AnchorPane>

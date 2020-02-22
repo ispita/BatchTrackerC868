@@ -5,6 +5,7 @@
  */
 package batchtrackerc868.ViewController;
 
+import batchtrackerc868.Model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
  * @author fborojan
  */
 public class HomeController implements Initializable {
+    User currentUser;
 
     @FXML
     private void handleButtonBatch(ActionEvent e)throws Exception {
@@ -30,12 +32,16 @@ public class HomeController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BatchInput.fxml"));
         viewBatchInputRoot = loader.load();
         
-//        BatchInputController controller = loader.getCRontroller();
-//        controller.setCurrentUser(currentUser);
+        BatchInputController controller = loader.getController();
+        controller.setCurrentUser(currentUser);
         Scene viewBatchInputScene = new Scene(viewBatchInputRoot);
         viewBatchInputStage.setScene(viewBatchInputScene);           
         viewBatchInputStage.show(); 
 
+    }
+    
+    public void setCurrentUser(User passCurrentUser){
+        this.currentUser = passCurrentUser;
     }
     
     @Override
