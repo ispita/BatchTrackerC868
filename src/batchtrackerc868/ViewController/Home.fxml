@@ -3,9 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="316.0" prefWidth="485.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="batchtrackerc868.ViewController.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="316.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.HomeController">
     <children>
         <Button fx:id="button" layoutX="15.0" layoutY="70.0" onAction="#handleButtonBatch" text="Batch Input" />       
       <Label layoutX="15.0" prefHeight="70.0" prefWidth="422.0" text="Batch Tracker">
@@ -13,5 +14,13 @@
             <Font size="36.0" />
          </font>
       </Label>
+      <Button layoutX="115.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleButtonReports" text="Reports" />
+      <Pane fx:id="adminPane" layoutX="6.0" layoutY="102.0" prefHeight="82.0" prefWidth="457.0" visible="false">
+         <children>
+            <Button layoutX="8.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleButtonAddUser" text="Add User" />
+            <Button layoutX="186.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleButtonDeleteUser" text="Delete User" />
+            <Button layoutX="89.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleButtonModifyUser" text="Modify User" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

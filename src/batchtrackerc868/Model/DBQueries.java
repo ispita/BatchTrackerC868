@@ -17,6 +17,7 @@ import java.time.Instant;
 import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 /**
  *
  * @author fborojan
@@ -82,7 +83,27 @@ public class DBQueries {
     }
         
     
-    
+     public static boolean setUser(String username, String department, String password){
+        try{
+            String SQL = "INSERT INTO user (username,department,password) VALUES (?,?,?)";
+            PreparedStatement prepStmnt = DBConn.prepareStatement(SQL);
+            prepStmnt.setString(1, username);
+            prepStmnt.setString(2, department);
+            prepStmnt.setString(3, password);
+            prepStmnt.executeUpdate();
+            return true;
+        }
+        catch(SQLException e){
+            System.out.println("Error: " + e);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Incorrect Parameters");
+            alert.setHeaderText("Enter a UNIQUE name and select a department!");
+            alert.setContentText("You must enter a UNIQUE name and select a department");
+       
+            alert.showAndWait();
+        }
+        return false;
+    }
     public static boolean setPassword(String username, String password){
         try{
             String SQL = "UPDATE user SET password = ? where username = ?";
@@ -98,6 +119,53 @@ public class DBQueries {
         return false;
     }
     
+    public static boolean deleteUser(String username){
+        try{
+            String SQL = "DELETE FROM user WHERE username = ? and username != 'admin'";
+            PreparedStatement prepStmnt = DBConn.prepareStatement(SQL);
+            prepStmnt.setString(1, username);
+            prepStmnt.executeUpdate();
+            return true;
+        }
+        catch(SQLException e){
+            System.out.println("Error: " + e);
+        }
+        return false;
+    }
+    public static boolean modifyUser(String username, String newUsername, String department, String password){
+        try{
+            String SQL = "UPDATE user set username = ?, department = ?, password = ?  WHERE username = ? and username != 'admin'";
+            PreparedStatement prepStmnt = DBConn.prepareStatement(SQL);
+            prepStmnt.setString(1, newUsername);
+            prepStmnt.setString(2, department);
+            prepStmnt.setString(3, password);
+            prepStmnt.setString(4, username);
+            prepStmnt.executeUpdate();
+            return true;
+        }
+        catch(SQLException e){
+            System.out.println("Error: " + e);
+        }
+        return false;
+    }
+    
+        public static String getUserDepartment(String username){
+            String userDep = null;
+        try{
+            String SQL = "SELECT department FROM user WHERE username = ?";
+            PreparedStatement prepStmnt = DBConn.prepareStatement(SQL);
+            prepStmnt.setString(1, username);
+            ResultSet result = prepStmnt.executeQuery();
+            while(result.next()){
+                userDep = result.getString("department");
+                return userDep;
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Error: " + e);
+        }
+        return userDep;
+    }
     
     public static ObservableList assembleBatchData(){        
     ObservableList batchData = FXCollections.observableArrayList();
@@ -242,7 +310,49 @@ public class DBQueries {
     return batchData;
 }    
     
-    
+     public static ObservableList getYears(){
+     ObservableList yearData = FXCollections.observableArrayList();
+     try{
+         String SQL = "select distinct YEAR(time_in) as year from batch_input";
+         ResultSet result = DBConn.createStatement().executeQuery(SQL);
+         while(result.next()){
+             yearData.add(result.getString("year"));
+         }
+     }
+     catch(SQLException e){
+         System.out.println("Error: " + e);
+     }
+     return yearData;
+ }
+     
+     public static ObservableList getEmployees(){
+     ObservableList employeeList = FXCollections.observableArrayList();
+     try{
+         String SQL = "select distinct username from user where username != 'admin'";
+         ResultSet result = DBConn.createStatement().executeQuery(SQL);
+         while(result.next()){
+             employeeList.add(result.getString("username"));
+         }
+     }
+     catch(SQLException e){
+         System.out.println("Error: " + e);
+     }
+     return employeeList;
+ }
+          public static ObservableList getDepartments(){
+     ObservableList departmentList = FXCollections.observableArrayList();
+     try{
+         String SQL = "select distinct department from user where username != 'admin'";
+         ResultSet result = DBConn.createStatement().executeQuery(SQL);
+         while(result.next()){
+             departmentList.add(result.getString("department"));
+         }
+     }
+     catch(SQLException e){
+         System.out.println("Error: " + e);
+     }
+     return departmentList;
+ }
 public static void insertBatchIn(String batch, String name, String department){        
     try{      
         
