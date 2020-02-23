@@ -38,7 +38,7 @@ public class DeleteUserController implements Initializable {
     @FXML
     private void handleDeleteButton(ActionEvent e)throws Exception{
         
-        if (userName.getValue().toString() != null){
+        if (userName.getValue() != null){
         deleteUser(userName.getValue().toString());
         Stage viewHomeStage; 
         Parent viewHomeRoot; 

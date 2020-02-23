@@ -2,18 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="batchtrackerc868.ViewController.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="batchtrackerc868.ViewController.LoginController">
      <children>
       <Button fx:id="button" layoutX="221.0" layoutY="287.0" onAction="#handleLoginButton" prefHeight="25.0" prefWidth="149.0" text="Login" />
       <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Label fx:id="userLabel" layoutX="268.0" layoutY="149.0" text="Username" />
       <Label fx:id="passLabel" layoutX="269.0" layoutY="219.0" prefHeight="17.0" prefWidth="54.0" text="Password" />
       <TextField fx:id="usernameInput" layoutX="221.0" layoutY="175.0" />
-      <TextField fx:id="passwordInput" layoutX="221.0" layoutY="249.0" />
+      <PasswordField fx:id="passwordInput" layoutX="221.0" layoutY="249.0" />
       <Label layoutX="193.0" layoutY="34.0" text="Batch Tracker">
          <font>
             <Font size="36.0" />

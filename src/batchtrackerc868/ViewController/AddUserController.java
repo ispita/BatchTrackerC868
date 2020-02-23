@@ -9,6 +9,8 @@ import static batchtrackerc868.Model.DBQueries.setUser;
 import batchtrackerc868.Model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,14 +36,18 @@ public class AddUserController implements Initializable {
     private ObservableList<String> departmentList = FXCollections.observableArrayList();
     @FXML TextField userName, password;
     @FXML ComboBox department;
+    Pattern pattern = Pattern.compile("\\s");
+    
     /**
      * Initializes the controller class.
      */
     @FXML
     private void handleSaveButton(ActionEvent e)throws Exception{
-        
-        if (userName.getText() != null && department.getValue().toString() != null){
-        setUser(userName.getText(),department.getValue().toString(),password.getText());
+        String uName = userName.getText().trim();
+        Matcher matcher = pattern.matcher(uName);
+        boolean whiteSpaceExists = matcher.find();
+        if (!uName.equals("") && department.getValue() != null && !whiteSpaceExists){
+        setUser(uName,department.getValue().toString(),password.getText());
         Stage viewHomeStage; 
         Parent viewHomeRoot; 
         viewHomeStage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -58,7 +64,7 @@ public class AddUserController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Incorrect Parameters");
             alert.setHeaderText("Enter a name and select a department!");
-            alert.setContentText("You must enter a name and select a department");
+            alert.setContentText("You must enter a Username(no spaces!) and select a department");
        
             alert.showAndWait();
         }

@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import static batchtrackerc868.Model.DBQueries.userCredential;
+import javafx.scene.control.PasswordField;
 
 
 /**
@@ -39,7 +40,7 @@ public class LoginController implements Initializable {
     @FXML
     Label passLabel;
     @FXML
-    TextField passwordInput;
+    PasswordField passwordInput;
     @FXML
     TextField usernameInput;
     String username;
@@ -55,7 +56,7 @@ public class LoginController implements Initializable {
         if(credCheck == true){
         currentUser = DBQueries.setCurrentUser(username);
             System.out.println(currentUser.getUsername().get());
-        if (!password.equals("BATCHTRACKER")){
+        if (!password.equals("BATCHTRACKER") && !password.equals("admin")){
         Stage homeStage; 
         Parent homeRoot; 
         homeStage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -84,8 +85,7 @@ public class LoginController implements Initializable {
         }
         else{
 
-            System.out.println(usernameInput.getText());
-            System.out.println(passwordInput.getText());
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Incorrect Username/Password");
             alert.setHeaderText("Username or password entered incorrectly!");
