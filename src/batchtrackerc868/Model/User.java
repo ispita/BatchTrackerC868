@@ -26,6 +26,11 @@ public class User {
         this.department = new SimpleStringProperty(department);
     }
     
+    public User(){
+        this.userID = new SimpleIntegerProperty();
+        this.username = new SimpleStringProperty();
+        this.department = new SimpleStringProperty();
+    }
     public IntegerProperty getUserId(){
         return userID;
     }
